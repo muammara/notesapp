@@ -9,6 +9,7 @@ const addNote = function (title, body) {
     const duplicateNotes = notes.filter((note) =>
         note.title === title
     )
+    debugger
 
     if (duplicateNotes.length === 0) {
         notes.push({
@@ -27,7 +28,7 @@ const removeNote = function (title) {
     const notesToKeep = notes.filter(function (note) {
         return note.title !== title
     })
-
+    
     if (notes.length > notesToKeep.length) {
         console.log(chalk.green.inverse('Note removed!'))
         saveNotes(notesToKeep)
@@ -46,6 +47,7 @@ const listNotes = () => {
     notes.forEach((note) => readNote(note.title))
 }
 const saveNotes = function (notes) {
+    /*debugger*/
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
